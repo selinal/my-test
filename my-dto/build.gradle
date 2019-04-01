@@ -1,0 +1,51 @@
+apply plugin: 'java'
+apply plugin: 'org.openrepose.gradle.plugins.jaxb'
+
+group 'org.my.test'
+version '1.0-SNAPSHOT'
+
+//buildscript {
+//    repositories {
+//        maven {
+//            url "https://plugins.gradle.org/m2/"
+//        }
+//    }
+//    dependencies {
+//        classpath "gradle.plugin.org.openrepose:gradle-jaxb-plugin:2.5.0"
+//    }
+//}
+
+configurations {
+    jaxb
+}
+
+dependencies {
+    jaxb "org.jvnet.jaxb2_commons:jaxb2-basics:1.11.1"
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-basics-ant:1.11.1'
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-basics-annotate:1.0.4'
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:1.1'
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-value-constructor:3.0'
+    jaxb 'org.jvnet.jaxb2_commons:jaxb2-fluent-api:3.0'
+    jaxb 'org.glassfish.jaxb:jaxb-xjc:2.2.11'
+    jaxb 'org.glassfish.jaxb:jaxb-runtime:2.2.11'
+}
+
+jaxb {
+//    xsdDir = "${project.projectDir}/src/main/resources/schemas"
+    xjc {
+        generateEpisodeFiles = false
+        taskClassname = "org.jvnet.jaxb2_commons.xjc.XJC2Task"
+        bindingsDir = "${project.projectDir}/src/main/resources"
+        args = ["-Xfluent-api", "-Xvalue-constructor", "-Xannotate", "-Xnamespace-prefix"]
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java', "${buildDir}/generated-sources/xjc"]
+        }
+    }
+}
+
+compileJava.dependsOn xjc

@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:oms_common="http://sberbank.ru/oms/common/6.0" targetNamespace="http://sberbank.ru/oms/common/6.0" version="6.0.0.2">
+	<!-- common simple types -->
+	<!-- simple types -->
+	<xsd:simpleType name="Global_ID_Type">
+		<xsd:annotation>
+			<xsd:documentation>Справочное значение (Long)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:long"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Global_ID_String_Type">
+		<xsd:annotation>
+			<xsd:documentation>Справочное значение (String)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="FormattedDate">
+		<xsd:annotation>
+			<xsd:documentation>Дата в формате YYYY-MM-DD, YYYY.MM.DD, YYYY/MM/DD, DD/MM/YYYY, DD.MM.YYYY, DD-MM-YYYY</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:length value="10"/>
+			<xsd:pattern value="\d{4}-\d{2}-\d{2}"/>
+			<xsd:pattern value="\d{4}\.\d{2}\.\d{2}"/>
+			<xsd:pattern value="\d{4}/\d{2}/\d{2}"/>
+			<xsd:pattern value="\d{2}/\d{2}/\d{4}"/>
+			<xsd:pattern value="\d{2}\.\d{2}\.\d{4}"/>
+			<xsd:pattern value="\d{2}-\d{2}-\d{4}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String9">
+		<xsd:annotation>
+			<xsd:documentation>Строка(9)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="9"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String10">
+		<xsd:annotation>
+			<xsd:documentation>Строка(10)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="10"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String16">
+		<xsd:annotation>
+			<xsd:documentation>Строка(16)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="16"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String19">
+		<xsd:annotation>
+			<xsd:documentation>Строка(19)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="19"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String22">
+		<xsd:annotation>
+			<xsd:documentation>Строка(22)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="22"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String27">
+		<xsd:annotation>
+			<xsd:documentation>Строка(27)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="27"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String32">
+		<xsd:annotation>
+			<xsd:documentation>Строка(32)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="32"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String36">
+		<xsd:annotation>
+			<xsd:documentation>Строка(36)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="36"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String40">
+		<xsd:annotation>
+			<xsd:documentation>Строка(40)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="40"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String50">
+		<xsd:annotation>
+			<xsd:documentation>Строка(50)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="50"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String80">
+		<xsd:annotation>
+			<xsd:documentation>Строка(80)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="80"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String100">
+		<xsd:annotation>
+			<xsd:documentation>Строка(100)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="100"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String120">
+		<xsd:annotation>
+			<xsd:documentation>Строка(120)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="120"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String250">
+		<xsd:annotation>
+			<xsd:documentation>Строка(250)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="250"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String255">
+		<xsd:annotation>
+			<xsd:documentation>Строка(255)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="255"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String767">
+		<xsd:annotation>
+			<xsd:documentation>Строка(767)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="767"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="String1024">
+		<xsd:annotation>
+			<xsd:documentation>Строка(1024)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1024"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Integer">
+		<xsd:annotation>
+			<xsd:documentation>Целочисленное значение (32-bit)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:int"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Long">
+		<xsd:annotation>
+			<xsd:documentation>Целочисленное значение (64-bit)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:long"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="Boolean">
+		<xsd:annotation>
+			<xsd:documentation>Логическое значение (true, false, 1, 0)</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:boolean"/>
+	</xsd:simpleType>
+	<!-- common complex types -->
+	<xsd:complexType name="ExternalSystemData_Type">
+		<xsd:annotation>
+			<xsd:documentation>Идентификационные данные во внешней системе</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="SystemDataLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор блока данных в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExternalSystemId" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор системы (EQUIVALENT SYSTEM)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ClientId" type="oms_common:String1024" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор клиента в системе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PPRBSystemData_Type">
+		<xsd:annotation>
+			<xsd:documentation>Идентификационные данные в ППРБ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="PartyId" type="oms_common:Long">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор клиента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PartyVersion" type="oms_common:Integer" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Версия клиента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="UserInfo_Type">
+		<xsd:annotation>
+			<xsd:documentation>Информация о пользователе</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="UserLogin" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Логин пользователя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="UserFullName" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>ФИО пользователя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceSystemCode" type="oms_common:Global_ID_Type">
+				<xsd:annotation>
+					<xsd:documentation>Система, в которой проведено изменение (EQUIVALENT SYSTEM)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BankInfo" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Сведения о Банке</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="BranchId" type="oms_common:String22" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Номер филиала</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="AgencyId" type="oms_common:String22" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Номер отделения</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="RegionId" type="oms_common:String32" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Номер Тербанка</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="InfoFlowChannel" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Канал поступления информации</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="IterationNumber" type="oms_common:Integer" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Номер итерации</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="InfoFlowChannelTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>Канал поступления информации (FlowChannelType)</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AddressSrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Адрес - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="AddressLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор адреса в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AddressTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип адреса (CONTACT_USAGE_TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AddressLine1" type="oms_common:String1024" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Ненормализованый адрес одной строкой</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="oms_common:AddressComponents_Group">
+				<xsd:annotation>
+					<xsd:documentation>Поля компонент адреса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="AcceptedAddress" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак подтверждения адреса оператором</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AddressST_Type">
+		<xsd:annotation>
+			<xsd:documentation>Стандартизированный адрес</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="AddressLine1" type="oms_common:String1024">
+				<xsd:annotation>
+					<xsd:documentation>Ненормализованый адрес одной строкой</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="oms_common:AddressComponents_Group">
+				<xsd:annotation>
+					<xsd:documentation>Поля компонент адреса</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="AddressSubType" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Подтип адреса (ADDRESS SUBTYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FiasId" type="oms_common:String36" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор ФИАС</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="FiasCode" type="oms_common:String27" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код ФИАС</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="KladrCode" type="oms_common:String19" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код КЛАДР</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="TimeZoneCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код часового пояса (TIME ZONE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SourceAddressLine" type="oms_common:String1024" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Исходный адрес для разбора</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>		
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AddressQC_Type">
+		<xsd:annotation>
+			<xsd:documentation>Коды качества адреса</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="ValidationQC" type="oms_common:Global_ID_Type">
+				<xsd:annotation>
+					<xsd:documentation>Код качества - код валидации адреса (QUALITY CODES)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CompletenessQC" type="oms_common:Global_ID_Type">
+				<xsd:annotation>
+					<xsd:documentation>Код полноты адреса (QUALITY CODES)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PostCodeQC" type="oms_common:Global_ID_Type">
+				<xsd:annotation>
+					<xsd:documentation>Код качества индекса (QUALITY CODES)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:group name="AddressComponents_Group">
+		<xsd:annotation>
+			<xsd:documentation>Поля компонент адреса</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="PostalCode" type="oms_common:String40" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Почтовый индекс</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CountryCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код страны (COUNTRY)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Region" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Регион</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegionTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код типа региона (REGION TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegionCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код региона (REGION)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="District" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Район</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DistrictTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код типа района (DISTRICT TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="City" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Город</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CityTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код типа города (CITY TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Settlement" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Населенный пункт</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SettlementTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код типа населенного пункта (SETTLEMENT TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Street" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Улица</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="StreetTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код типа улицы (STREET TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="House" type="oms_common:String120" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дом</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Unit" type="oms_common:String120" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Корпус</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Building" type="oms_common:String120" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Строение</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Apartment" type="oms_common:String120" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Квартира</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Compartment" type="oms_common:String120" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Помещение</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Office" type="oms_common:String120" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Офис</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:complexType name="PhoneSrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Телефон - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="PhoneLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор телефона в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Тип телефона (CONTACT_USAGE_TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneNumber" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер телефона</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NoPhone" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак отсутствия телефона</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcceptedPhone" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак подтверждения телефона оператором</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Operator" type="oms_common:Global_ID_String_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Оператор сотовой связи (UCPMOBILEOPERATOR)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PhoneST_Type">
+		<xsd:annotation>
+			<xsd:documentation>Телефон - Стандартизированные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="PhoneTypeCodeST" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Стандартизированный тип телефона (CONTACT_USAGE_TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PhoneNumberST" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Стандартизированный номер телефона</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Operator" type="oms_common:Global_ID_String_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Оператор сотовой связи (UCPMOBILEOPERATOR)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RegionCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Регион (REGION)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="EmailSrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Адрес электронной почты - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="EmailLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор e-mail в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Email" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Значение e-mail</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NoEmail" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак отсутствия e-mail</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcceptedEmail" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак подтверждения e-mail оператором</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IdentificationSrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Документ - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IdentificationLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор документа в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="oms_common:Identification_Group">
+				<xsd:annotation>
+					<xsd:documentation>Исходные поля документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="AcceptedDocument" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак подтверждения документа оператором</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:group name="Identification_Group">
+		<xsd:annotation>
+			<xsd:documentation>Поля документа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IdCategory" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код категории документа (PARTY IDENTIFICATION CATEGORY)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IdTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код типа документа (PARTY IDENTIFICATION TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IdSeries" type="oms_common:String40" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Серия документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IdNum" type="oms_common:String250" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Номер документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="oms_common:IdentificationOtherComponents_Group">
+				<xsd:annotation>
+					<xsd:documentation>Дополнительные поля документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+		</xsd:sequence>
+	</xsd:group>
+	<xsd:group name="IdentificationOtherComponents_Group">
+		<xsd:annotation>
+			<xsd:documentation>Дополнительные поля документа</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IssueDt" type="oms_common:FormattedDate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата выдачи</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IssuedOrg" type="oms_common:String1024" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Кем выдан документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IssuedCode" type="oms_common:String40" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код подразделения, выдавшего документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ExpDt" type="oms_common:FormattedDate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Планируемая дата окончания срока действия документа</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NationalityCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код страны гражданства в документе (COUNTRY)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+</xsd:schema>

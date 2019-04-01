@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:oms_ind="http://sberbank.ru/oms/ind/6.0" xmlns:oms_common="http://sberbank.ru/oms/common/6.0" targetNamespace="http://sberbank.ru/oms/ind/6.0" version="6.0.1.0">
+	<xsd:import namespace="http://sberbank.ru/oms/common/6.0" schemaLocation="common_v1.0.xsd"/>
+
+
+	<!-- individual root elements -->
+	<xsd:element name="QualityRequest" type="oms_ind:QualityRequest"/>
+	<xsd:element name="QualityResponse" type="oms_ind:QualityResponse"/>
+
+	<xsd:complexType name="QualityRequest">
+		<xsd:annotation>
+			<xsd:documentation>Запрос на стандартизацию ФЛ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IndividualInfoSrc" type="oms_ind:IndividualInfoSrc">
+				<xsd:annotation>
+					<xsd:documentation>Исходные (нестандартизированные) данные клиента</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="QualityResponse">
+		<xsd:annotation>
+			<xsd:documentation>Ответ стандартизации ФЛ</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IndividualInfo" type="oms_ind:IndividualInfo">
+				<xsd:annotation>
+					<xsd:documentation>Исходные данные + стандартизированные данные + коды качества</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- individual source data type -->
+	<xsd:complexType name="IndividualInfoSrc">
+		<xsd:annotation>
+			<xsd:documentation>Исходные (нестандартизированные) данные клиента</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IndividualExternalSystemData" type="oms_common:ExternalSystemData_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Идентификационные данные во внешней системе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualPPRBSystemData" type="oms_common:PPRBSystemData_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификационные данные в ППРБ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualUserInfo" type="oms_common:UserInfo_Type" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Информация о пользователе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualNameGenderSrc" type="oms_ind:IndividualNameGenderSrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>ФИО и пол</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualBirthDateSrc" type="oms_ind:IndividualBirthDateSrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Дата рождения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualAddressSrc" type="oms_common:AddressSrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Адрес</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualPhoneSrc" type="oms_common:PhoneSrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Телефон</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualEmailSrc" type="oms_common:EmailSrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Адрес электронной почты</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualIdentificationSrc" type="oms_common:IdentificationSrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Документ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualDeathDateSrc" type="oms_ind:IndividualDeathDateSrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Дата смерти</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualNationalitySrc" type="oms_ind:IndividualNationalitySrc_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Гражданство</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- individual result data type -->
+	<xsd:complexType name="IndividualInfo">
+		<xsd:annotation>
+			<xsd:documentation>Исходные данные + стандартизированные данные + коды качества</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="IndividualExternalSystemData" type="oms_common:ExternalSystemData_Type" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Идентификационные данные во внешней системе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualPPRBSystemData" type="oms_common:PPRBSystemData_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Идентификационные данные в ППРБ</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualUserInfo" type="oms_common:UserInfo_Type" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Информация о пользователе</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="IndividualNameGender" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>ФИО и пол</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_ind:IndividualNameGenderSrc_Type">
+							<xsd:annotation>
+								<xsd:documentation>Исходные непреобразованные данные</xsd:documentation>
+							</xsd:annotation>
+							<xsd:sequence>
+								<xsd:element name="IndividualNameGenderST">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="FamilyNameST" type="oms_common:String255">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированная фамилия</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="GivenNameST" type="oms_common:String255">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированное имя</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="MiddleNameST" type="oms_common:String255" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированное отчество</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="FullNameST" type="oms_common:String767" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированное ФИО одной строкой</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="FamilyNameTr" type="oms_common:String255" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Фамилия латиницей</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="GivenNameTr" type="oms_common:String255" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Имя латиницей</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="MiddleNameTr" type="oms_common:String255" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Отчество латиницей</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="LanguageST" type="oms_common:String255">
+												<xsd:annotation>
+													<xsd:documentation>Язык</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="GenderTypeCodeST" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код стандартизированного пола (GENDER TYPE)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="IndividualNameGenderQC">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="FamilyNameQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества Фамилии (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="GivenNameQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества Имени (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="MiddleNameQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества Отчества (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="FullNameQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Общий код качества ФИО (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="NameStatusQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Статус распознавания ФИО (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="GenderTypeCodeQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества Пола (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IndividualBirthDate" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Дата рождения</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_ind:IndividualBirthDateSrc_Type">
+							<xsd:annotation>
+								<xsd:documentation>Исходные непреобразованные данные</xsd:documentation>
+							</xsd:annotation>
+							<xsd:sequence>
+								<xsd:element name="BirthDateST" type="oms_common:FormattedDate" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>Стандартизированная дата рождения</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="BirthDateQC" type="oms_common:Global_ID_Type">
+									<xsd:annotation>
+										<xsd:documentation>Код качества даты рождения (QUALITY CODES)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IndividualAddress" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Адрес</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_common:AddressSrc_Type">
+							<xsd:annotation>
+								<xsd:documentation>Исходные непреобразованные данные</xsd:documentation>
+							</xsd:annotation>
+							<xsd:sequence>
+								<xsd:element name="AddressST" type="oms_common:AddressST_Type"/>
+								<xsd:element name="AddressQC" type="oms_common:AddressQC_Type"/>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IndividualPhone" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Телефон</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_common:PhoneSrc_Type">
+							<xsd:annotation>
+								<xsd:documentation>Исходные непреобразованные данные</xsd:documentation>
+							</xsd:annotation>
+							<xsd:sequence>
+								<xsd:element name="PhoneST" type="oms_common:PhoneST_Type"/>
+								<xsd:element name="PhoneNumberQC" type="oms_common:Global_ID_Type">
+									<xsd:annotation>
+										<xsd:documentation>Код качества телефона (QUALITY CODES)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IndividualEmail" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Адрес электронной почты</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_common:EmailSrc_Type">
+							<xsd:annotation>
+								<xsd:documentation>Исходные непреобразованные данные</xsd:documentation>
+							</xsd:annotation>
+							<xsd:sequence>
+								<xsd:element name="EmailST" type="oms_common:String255">
+									<xsd:annotation>
+										<xsd:documentation>Стандартизированное значение e-mail</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="EmailQC" type="oms_common:Global_ID_Type">
+									<xsd:annotation>
+										<xsd:documentation>Код качества e-mail (QUALITY CODES)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IndividualIdentification" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Документ</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_common:IdentificationSrc_Type">
+							<xsd:annotation>
+								<xsd:documentation>Исходные непреобразованные данные</xsd:documentation>
+							</xsd:annotation>
+							<xsd:sequence>
+								<xsd:element name="IdentificationST">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="IdTypeCode" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированный код типа документа (PARTY IDENTIFICATION TYPE)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="IdSeries" type="oms_common:String40" minOccurs="0">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированная серия документа</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="IdNum" type="oms_common:String250">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированный номер документа</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:group ref="oms_common:IdentificationOtherComponents_Group">
+												<xsd:annotation>
+													<xsd:documentation>Стандартизированные поля документа</xsd:documentation>
+												</xsd:annotation>
+											</xsd:group>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="IdentificationQC">
+									<xsd:annotation>
+										<xsd:documentation>Документ - коды качества</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="IdNumberQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества серии/номера документа (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="IssuedDateQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества даты выдачи документа (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="IssueDtCrossQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества кросс-проверки даты выдачи документа и даты рождения (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="ExpDateQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества планируемой даты окончания действия документа (QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+											<xsd:element name="IssuedOrgQC" type="oms_common:Global_ID_Type">
+												<xsd:annotation>
+													<xsd:documentation>Код качества организации, выдавшей документ(QUALITY CODES)</xsd:documentation>
+												</xsd:annotation>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IndividualDeathDate" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Дата смерти</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_ind:IndividualDeathDateSrc_Type">
+							<xsd:sequence>
+								<xsd:element name="DeathDateST" type="oms_common:FormattedDate" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>Стандартизированная дата смерти</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="DeathDateQC" type="oms_common:Global_ID_Type">
+									<xsd:annotation>
+										<xsd:documentation>Код качества даты смерти (QUALITY CODES)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="IndividualNationality" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>Гражданство</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="oms_ind:IndividualNationalitySrc_Type">
+							<xsd:sequence>
+								<xsd:element name="NationalityCodeST" type="oms_common:Global_ID_Type" minOccurs="0">
+									<xsd:annotation>
+										<xsd:documentation>Стандартизированная страна гражданства (COUNTRY)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element name="NationalityCodeQC" type="oms_common:Global_ID_Type">
+									<xsd:annotation>
+										<xsd:documentation>Код качества страны гражданства (QUALITY CODES)</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- individual data types -->
+	<xsd:complexType name="IndividualNameGenderSrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>ФИО и пол - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="NameGenderLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор ФИО и пола в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:group ref="oms_ind:IndividualName_Group">
+				<xsd:annotation>
+					<xsd:documentation>Исходные поля ФИО</xsd:documentation>
+				</xsd:annotation>
+			</xsd:group>
+			<xsd:element name="AcceptedName" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак подтверждения ФИО оператором</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GenderTypeCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Код пола (GENDER TYPE)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcceptedGender" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак подтверждения пола оператором</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IndividualBirthDateSrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Дата рождения - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="BirthDateLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор даты рождения в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BirthDate" type="oms_common:FormattedDate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата рождения</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AcceptedBirthDate" type="oms_common:Boolean" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Признак подтверждения даты рождения оператором</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IndividualDeathDateSrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Дата смерти - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="DeathDateLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор даты смерти в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DeathDate" type="oms_common:FormattedDate" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Дата смерти</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="IndividualNationalitySrc_Type">
+		<xsd:annotation>
+			<xsd:documentation>Гражданство - Исходные непреобразованные данные</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="NationalityLabel" type="oms_common:String120">
+				<xsd:annotation>
+					<xsd:documentation>Идентификатор гражданства в сообщении</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="NationalityCode" type="oms_common:Global_ID_Type" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Страна гражданства (COUNTRY)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!-- individual element groups -->
+	<xsd:group name="IndividualName_Group">
+		<xsd:annotation>
+			<xsd:documentation>Поля ФИО</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="FamilyName" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Фамилия</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="GivenName" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Имя</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="MiddleName" type="oms_common:String255" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Отчество</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:group>
+</xsd:schema>
